@@ -1,8 +1,9 @@
+import { Maze } from "./components/Maze";
 
 export const App = () => {
   return (
   <div>
-    Labyrinth Project 
+    <Maze /> 
   </div>
   );
 };
