@@ -14,7 +14,7 @@ export const useLoginStore = create((set, get) => ({
     const response = await axios.post("https://labyrinth.technigo.io/action", {
       username,
       ...action,
-    });
+  });
     set({ gamedata: response.data });
   },
   logindata: {
