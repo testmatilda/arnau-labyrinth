@@ -1,27 +1,32 @@
+import { useLoginStore } from '../stores/loginStore';
 import { useState } from 'react';
+
 import { LoginStart } from './LoginStart';
 import { GameScreen } from './GameScreen';
-import useLogginStore from '../stores/logginStore';
+import "./Maze.css"
 
 export const Maze = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [description, setDescription] = useState('');
+  const [actions, setActions] = useState([]);
+
   const handleLogin = async () => {
-    try {
-      // Perform login actions here, like setting isLoggedIn to true after successful login
-      setIsLoggedIn(true);
-      await useLogginStore.getState().startGame(); // This function should fetch initial game state
-    } catch (error) {
-      console.error('Failed to start the game:', error);
-      // Handle error, display error message to the user
-    }
+      // const { description, actions } = await useLoginStore.getState().startGame(); // Assuming startGame returns necessary data
+      // setDescription(description);
+      // setActions(actions);
+      if(useLoginStore.getState().isLoggedIn()) {
+        setIsLoggedIn(true); // Set isLoggedIn to true after successful login
+        setDescription(useLoginStore.getState().gamedata.description)
+      } else {
+        alert('liaar!!!!!')
+      }
   };
 
   return (
-    <div>
-      {!isLoggedIn && <LoginStart onLogin={handleLogin} />}
-      {isLoggedIn && <GameScreen />}
+    <div className='maze-container'>
+      {!isLoggedIn && <LoginStart onStartGameLogin={handleLogin} />}
+      {isLoggedIn && <GameScreen description={description} actions={actions} />}
     </div>
   );
 };
-

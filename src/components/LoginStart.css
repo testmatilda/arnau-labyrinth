@@ -1,0 +1,26 @@
+.login-background {
+  display: flex;
+  justify-content: center;
+  background-image: url("../assets/start-image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.container-start {
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.container-start input {
+  margin: 10px;
+}
