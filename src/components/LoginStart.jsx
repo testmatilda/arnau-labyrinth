@@ -1,12 +1,12 @@
-import { useState } from "react"
-import {useLoginStore} from "../stores/loginStore"
+import { useState } from "react";
+import { useGlobalStoreData } from "../stores/storeData";
 import { Footer } from "./Footer";
-import "./LoginStart.css"
+import { ReactTyped } from "react-typed";
+import "./LoginStart.css";
 
-
-export const LoginStart = ({onStartGameLogin}) => {
-  const [username, setUsername] = useState('');
-  const [error, setError] = useState('');
+export const LoginStart = ({ onStartGameLogin }) => {
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   const handleInputChange = (event) => {
@@ -15,42 +15,46 @@ export const LoginStart = ({onStartGameLogin}) => {
 
   const handleStartGame = async () => {
     if (!username.trim()) {
-      setError('Please enter a username.');
+      setError("Please enter a username.");
       return;
     }
 
     setLoading(true);
     try {
-      await useLoginStore.getState().startGame(username);
+      await useGlobalStoreData.getState().startGame(username);
     } catch (error) {
-      setError('Failed to start the game. Please try again later.');
+      setError("Failed to start the game. Please try again later.");
     } finally {
       setLoading(false);
     }
 
-
-    onStartGameLogin()
+    onStartGameLogin();
   };
 
   return (
     <div className="login-background">
       <div className="container-start">
-          <h1>WELCOME TO THE MAZE</h1>
-          <p>Only the brave ones will escape.</p>
-          <input
-            type="text"
-            value={username}
-            onChange={handleInputChange}
-            placeholder="Type your username here"
-            aria-label="Enter your username"
+        <h1>WELCOME TO THE MAZE</h1>
+        <p>Step into the darkness, where shadows whisper.</p>
+        <ReactTyped
+          strings={["Dare you face the mysteries of the labyrinth?"]}
+          typeSpeed={100}
+          showCursor={false}
           />
-          {error && <p className="error-message">{error}</p>}
-          <button onClick={handleStartGame} disabled={isLoading}>
-            {isLoading ? 'Starting...' : 'Start Game'}
-          </button>
+          <p></p>
+        <input
+          type="text"
+          value={username}
+          onChange={handleInputChange}
+          placeholder="Type your username here"
+          aria-label="Enter your username"
+        />
+        {error && <p className="error-message">{error}</p>}
+        <button onClick={handleStartGame} disabled={isLoading}>
+          {isLoading ? "Starting..." : "Start Game"}
+        </button>
       </div>
       <Footer />
     </div>
   );
 };
-

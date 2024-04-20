@@ -1,26 +1,27 @@
 import { useState } from "react";
-import { useLoginStore } from "../stores/loginStore";
+import { useGlobalStoreData } from "../stores/storeData";
+import { ReactTyped } from "react-typed";
 import "./GameScreen.css";
 
 export const GameScreen = ({ actions }) => {
   const [isLoading, setLoading] = useState(false);
 
   const getDescription = () => {
-    return useLoginStore.getState().gamedata.description;
+    return useGlobalStoreData.getState().gamedata.description;
   };
 
   const getCoordinates = () => {
-    return useLoginStore.getState().gamedata.coordinates;
+    return useGlobalStoreData.getState().gamedata.coordinates;
   };
 
   const getActions = () => {
-    return useLoginStore.getState().gamedata.actions[0];
+    return useGlobalStoreData.getState().gamedata.actions;
   };
 
   const handleAction = async (action) => {
     setLoading(true);
     try {
-      await useLoginStore.getState().sendAction("TechnigoPlayer", action);
+      await useGlobalStoreData.getState().sendAction("TechnigoPlayer", action);
     } catch (error) {
       console.error("Failed to perform action:", error);
       // Handle error, display error message to the user
@@ -39,15 +40,24 @@ export const GameScreen = ({ actions }) => {
     >
       <div className="game-screen">
         <p>{getDescription()}</p>
-        <p>{getActions}</p>
+        <p>{getActions().description}</p>
         <div className="actions">
-          {actions.map((action, index) => (
+          {/* {actions.map((action, index) => (
             <button
               key={index}
               onClick={() => handleAction(action)}
               disabled={isLoading}
             >
-              {action.description}
+              <p>{action.description}</p>
+            </button>
+          ))} */}
+          {getActions().map((action, index) => (
+            <button
+              key={index}
+              onClick={() => handleAction(action)}
+              disabled={isLoading}
+            >
+              <p>{action.description}</p>
             </button>
           ))}
         </div>

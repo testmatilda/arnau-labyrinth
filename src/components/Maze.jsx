@@ -1,4 +1,4 @@
-import { useLoginStore } from '../stores/loginStore';
+import { useGlobalStoreData } from '../stores/storeData';
 import { useState } from 'react';
 
 import { LoginStart } from './LoginStart';
@@ -12,12 +12,12 @@ export const Maze = () => {
   const [actions, setActions] = useState([]);
 
   const handleLogin = async () => {
-      // const { description, actions } = await useLoginStore.getState().startGame(); // Assuming startGame returns necessary data
+      // const { description, actions } = await useGlobalStoreData.getState().startGame(); // Assuming startGame returns necessary data
       // setDescription(description);
       // setActions(actions);
-      if(useLoginStore.getState().isLoggedIn()) {
+      if(useGlobalStoreData.getState().isLoggedIn()) {
         setIsLoggedIn(true); // Set isLoggedIn to true after successful login
-        setDescription(useLoginStore.getState().gamedata.description)
+        setDescription(useGlobalStoreData.getState().gamedata.description)
       } else {
         alert('liaar!!!!!')
       }

@@ -1,7 +1,18 @@
 import { create } from "zustand";
 import axios from "axios"; //this is an AI recomendation
 
-export const useLoginStore = create((set, get) => ({
+const storeData = (set, get) => ({
+  logindata: {
+    isLoggedIn: false,
+    username: "",
+  },
+  gamedata: {},
+  isLoggedIn: () => {
+    return get().logindata.isLoggedIn;
+  },
+  username: () => {
+    return get().logindata.username;
+  },
   startGame: async (username) => {
     const response = await axios.post("https://labyrinth.technigo.io/start", {
       username,
@@ -10,22 +21,13 @@ export const useLoginStore = create((set, get) => ({
     set({ gamedata: response.data });
     console.log(response.data);
   },
-  sendAction: async (username, action) => {
+  sendAction: async (username, actions) => {
     const response = await axios.post("https://labyrinth.technigo.io/action", {
       username,
-      ...action,
-  });
+      ...actions,
+    });
     set({ gamedata: response.data });
   },
-  logindata: {
-    isLoggedIn: false,
-    username: ""
-  },
-  gamedata: {},
-  username: () => {
-    return get().logindata.username;
-  },
-  isLoggedIn: () => {
-    return get().logindata.isLoggedIn;
-  },  
-}));
+});
+
+export const useGlobalStoreData = create(storeData);

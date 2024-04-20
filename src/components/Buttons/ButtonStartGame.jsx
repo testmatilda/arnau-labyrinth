@@ -1,7 +1,7 @@
-import useLoginStore from './loginStore';
+import useGlobalStoreData from './storeData';
 
 export const ButtonStartGame = () => {
-  const { isLoading, startGame } = useLoginStore();
+  const { isLoading, startGame } = useGlobalStoreData();
 
   const handleClick = () => {
     startGame();
