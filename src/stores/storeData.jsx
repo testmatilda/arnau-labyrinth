@@ -5,6 +5,9 @@ const storeData = (set, get) => ({
   logindata: {
     isLoggedIn: false,
     username: "",
+    type: null,
+    direction: null,
+    coordinates: null,
   },
   gamedata: {},
   isLoggedIn: () => {
@@ -21,10 +24,11 @@ const storeData = (set, get) => ({
     set({ gamedata: response.data });
     console.log(response.data);
   },
-  sendAction: async (username, actions) => {
+  sendAction: async (username, type, direction) => {
     const response = await axios.post("https://labyrinth.technigo.io/action", {
       username,
-      ...actions,
+      type,
+      direction,
     });
     set({ gamedata: response.data });
   },

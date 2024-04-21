@@ -1,5 +1,6 @@
 .game-screen-background {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-size: cover;
   background-position: center;
@@ -8,7 +9,7 @@
 }
 
 .game-screen {
-  margin: auto;
+  margin: 20px auto auto auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -21,4 +22,22 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+.actions{
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+.otherButtons:hover {
+  background-color: var(--COLOR-2);
+}
+
+.showDirections {
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 

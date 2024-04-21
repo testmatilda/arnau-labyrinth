@@ -46,7 +46,7 @@ export const LoginStart = ({ onStartGameLogin }) => {
           type="text"
           value={username}
           onChange={handleInputChange}
-          placeholder="Type your username here"
+          placeholder="Type username here"
           aria-label="Enter your username"
         />
         {error && <p className="error-message">{error}</p>}
