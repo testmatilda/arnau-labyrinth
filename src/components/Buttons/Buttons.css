@@ -1,0 +1,20 @@
+.audio,
+.restart {
+  position: fixed;
+  top: 5px;
+  color: rgba(255, 255, 255, 0.3);
+  border: none;
+}
+
+.audio {
+  left: 5px;
+}
+
+.restart {
+  right: 5px;
+}
+
+.audio:hover,
+.restart:hover {
+  color: rgb(0, 0, 0)
+}

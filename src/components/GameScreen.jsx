@@ -33,7 +33,7 @@ export const GameScreen = ({ actions }) => {
     } finally {
       setLoading(false);
       setShowActions(false);
-      setTypingComplete(false)
+      setTypingComplete(false);
     }
   };
 
@@ -58,7 +58,10 @@ export const GameScreen = ({ actions }) => {
         {typingComplete && (
           <>
             {hasDirections && (
-              <button className="otherButtons showDirections" onClick={() => setShowActions(!showActions)}>
+              <button
+                className="otherButtons showDirections"
+                onClick={() => setShowActions(!showActions)}
+              >
                 {showActions ? "Hide Directions" : "Show Directions"}
               </button>
             )}
@@ -80,12 +83,10 @@ export const GameScreen = ({ actions }) => {
                 ))}
               </div>
             )}
-            <div>
-              {/* <AudioButton></AudioButton>
-              <RestartButton></RestartButton> */}
-            </div>
           </>
         )}
+        <AudioButton></AudioButton>
+        <RestartButton></RestartButton>
       </div>
     </div>
   );

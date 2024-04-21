@@ -3,6 +3,7 @@ import { useGlobalStoreData } from "../stores/storeData";
 import { Footer } from "./Footer";
 import { ReactTyped } from "react-typed";
 import "./LoginStart.css";
+import { AudioButton } from "./Buttons/Buttons";
 
 export const LoginStart = ({ onStartGameLogin }) => {
   const [username, setUsername] = useState("");
@@ -54,6 +55,7 @@ export const LoginStart = ({ onStartGameLogin }) => {
           {isLoading ? "Starting..." : "Start Game"}
         </button>
       </div>
+      <AudioButton></AudioButton>
       <Footer />
     </div>
   );
