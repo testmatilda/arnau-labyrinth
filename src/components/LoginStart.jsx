@@ -41,8 +41,8 @@ export const LoginStart = ({ onStartGameLogin }) => {
           strings={["Dare you face the mysteries of the labyrinth?"]}
           typeSpeed={100}
           showCursor={false}
-          />
-          <p></p>
+        />
+        <p></p>
         <input
           type="text"
           value={username}

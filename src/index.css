@@ -32,6 +32,11 @@ input {
     sans-serif;
 }
 
+p,
+span {
+  line-height: 1.8;
+}
+
 input::placeholder,
 button {
   font-family: "Special Elite", system-ui, system-ui, Helvetica, Arial,
