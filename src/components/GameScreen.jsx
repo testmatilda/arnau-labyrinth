@@ -39,7 +39,7 @@ export const GameScreen = ({ actions }) => {
 
   // Dynamically set the background image URL based on coordinates
   const cleanCoordinates = getCoordinates().replace(",", "-");
-  const backgroundImageUrl = `url("src/assets/background-image-${cleanCoordinates}.png"`;
+  const backgroundImageUrl = `url("/background-image-${cleanCoordinates}.png"`;
 
   const hasDirections = getActions().some((action) => action.type === "move");
 
